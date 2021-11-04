@@ -9,7 +9,8 @@ enum Elemento {
 	ELETRICO,
 	FOGO,
 	AGUA,
-	PEDRA
+	PEDRA,
+	NORMAL
 };
 
 
