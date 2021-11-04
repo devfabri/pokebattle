@@ -27,7 +27,7 @@ public:
 		poder = x;
 	}
 	void setName(char x) {
-		nome = x;
+		nome_pokemon = x;
 	}	
 	Elemento getElement() {
 		return elemento;
