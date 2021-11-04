@@ -26,6 +26,9 @@ public:
 	void setPower(int x) {
 		poder = x;
 	}
+	void setName(char x) {
+		nome = x;
+	}	
 	Elemento getElement() {
 		return elemento;
 	}
