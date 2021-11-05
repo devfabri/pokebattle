@@ -65,10 +65,10 @@ public:
 		}
 	}
 
-	void drawCard(vector<Card>& hand, vector<Card>& deck) {
+	void drawCard(vector<Card>& hand, stack<Card>& deck) {
 		if (hand.size() < 5) {
-			hand.push_back(deck.back());
-			deck.pop_back();
+			hand.push_back(deck.top());
+			deck.pop();
 		}
 	}
 
@@ -132,7 +132,10 @@ int main() {
 	Hand hand2(deck1);
 	printDeck(deck1);
 	printHand(hand1);
-	printHand(hand2);
+	hand1.dumpCard(1);
+	deck.drawCard(hand1.getHand(), deck1);
+	printHand(hand1);
+	printDeck(deck1);
 
 
 	return 0;
