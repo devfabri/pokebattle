@@ -98,88 +98,42 @@ public:
 	}
 };
 
-int main() {
-	Deck deck;
-	stack<Card> deck1 = deck.getDeck();
+/// FUNÇÕES DE TESTE
+void printDeck(stack<Card> deck) {
 	int contador = 1;
-
-	contador = 1;
-	stack<Card> aux_deck = deck1;
-
 	cout << "\n DECK INICIAL" << endl;
-	for (int i = 0; i < 20; i++) {
-		Card c = aux_deck.top();
+	while (!deck.empty()) {
+		Card c = deck.top();
 		cout << contador << "o ";
 		cout << c.getName() << " ";
 		cout << c.getElement();
 		cout << " " << c.getPower() << endl;
 		contador++;
-		aux_deck.pop();
+		deck.pop();
 	}
+}
 
-	Hand hand(deck1);
-	contador = 1;
-
+void printHand(Hand hand) {
+	vector<Card> mao = hand.getHand();
+	int contador = 1;
 	cout << "\n HAND" << endl;
-	for (Card c : hand.getHand()) {
+	for (Card c : mao) {
 		cout << contador << "o ";
 		cout << c.getElement() << " ";
 		cout << c.getPower() << endl;
 		contador++;
 	}
+}
 
-	contador = 1;
-	aux_deck = deck1;
+int main() {
+	Deck deck;
+	stack<Card> deck1 = deck.getDeck();
+	Hand hand1(deck1);
+	Hand hand2(deck1);
+	printDeck(deck1);
+	printHand(hand1);
+	printHand(hand2);
 
-	cout << "\n DECK POS HAND" << endl;
-	for (int i = 0; i < deck1.size(); i++) {
-		Card c = aux_deck.top();
-		cout << contador << "o ";
-		cout << c.getName() << " ";
-		cout << c.getElement();
-		cout << " " << c.getPower() << endl;
-		contador++;
-		aux_deck.pop();
-	}
-
-	// cout << "\n DECK SEM A MAO" << endl;
-	// for (Card c : deck1) {
-	// 	cout << contador << "o ";
-	// 	cout << c.getElement();
-	// 	cout << " " << c.getPower() << endl;
-	// 	contador++;
-	// }
-
-	// contador = 1;
-	// hand.dumpCard(1);
-	// cout << "\n HAND" << endl;
-	// for (Card c : hand.getHand()) {
-	// 	cout << contador << "o ";
-	// 	cout << c.getElement() << " ";
-	// 	cout << c.getPower() << endl;
-	// 	contador++;
-	// }
-
-	// deck.drawCard(hand.getHand(), deck1);
-	// contador = 1;
-	// cout << "\n HAND" << endl;
-
-	// for (Card c : hand.getHand()) {
-	// 	cout << contador << "o ";
-	// 	cout << c.getElement() << " ";
-	// 	cout << c.getPower() << endl;
-	// 	contador++;
-	// }
-
-	// contador = 1;
-
-	// cout << "\n DECK POS DRAW" << endl;
-	// for (Card c : deck1) {
-	// 	cout << contador << "o ";
-	// 	cout << c.getElement();
-	// 	cout << " " << c.getPower() << endl;
-	// 	contador++;
-	// }
 
 	return 0;
 }
