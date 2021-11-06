@@ -12,10 +12,75 @@ enum Elemento {
 	ELETRICO,
 	FOGO,
 	AGUA,
-	PEDRA,
-	NORMAL
+	TERRESTRE,
+	PLANTA
 };
 
+class Boss {
+private:
+	Elemento elemento;
+	int hp;
+public:
+	Boss() {
+		hp = 2000;
+		elemento = Elemento(rand() % 3 + 1);
+	}
+	int getBossHp() {
+		return hp;
+	}
+	int getBossElement() {
+		return (int)elemento;
+	}
+	void takeDamage(int power, Elemento element) {
+		switch (elemento)
+		{
+		case 0:
+			if (element == 3) {
+				hp = hp - power * 2;
+			}
+			else {
+				hp = hp - power;
+			}
+			break;
+		case 1:
+			if (element == 3 || element == 2) {
+				hp = hp - power * 2;
+			}
+			else {
+				hp = hp - power;
+			}
+			break;
+		case 2:
+			if (element == 0 || element == 4) {
+				hp = hp - power * 2;
+			}
+			else {
+				hp = hp - power;
+			}
+			break;
+		case 3:
+			if (element == 2 || element == 4) {
+				hp = hp - power * 2;
+			}
+			else if (element == 0) {
+				hp = hp;
+			}
+			else {
+				hp = hp - power;
+			}
+			break;
+		case 4:
+			if (element == 1) {
+				hp = hp - power * 2;
+			}
+			else {
+				hp = hp - power;
+			}
+		default:
+			break;
+		}
+	}
+};
 
 class Card {
 private:
@@ -54,7 +119,6 @@ private:
 public:
 	Deck() {
 		srand((unsigned)time(0));
-		int randomNumber;
 		for (int i = 0; i < 20; i++) {
 			Card c;
 			// c.setElement((Elemento)(rand() % 4));
@@ -88,8 +152,9 @@ public:
 		}
 	};
 
-	void dumpCard(int cardPosition) {
+	void dumpCard(int cardPosition, Boss& boss) {
 		cardPosition--;
+		boss.takeDamage(hand[cardPosition].getPower(), hand[cardPosition].getElement());
 		hand.erase(hand.begin() + cardPosition);
 	}
 
@@ -98,8 +163,11 @@ public:
 	}
 };
 
-/// FUNÇÕES DE TESTE
-void printDeck(stack<Card> deck) {
+
+
+#pragma region Funções de teste
+void printDeck(Deck deckbase) {
+	stack<Card> deck = deckbase.getDeck();
 	int contador = 1;
 	cout << "\n DECK INICIAL" << endl;
 	while (!deck.empty()) {
@@ -125,17 +193,54 @@ void printHand(Hand hand) {
 	}
 }
 
+void printBoss(Boss& boss) {
+	cout << "Elemento do boss: " << boss.getBossElement() << endl;
+	cout << "Hp do Boss: " << boss.getBossHp() << endl;
+}
+#pragma endregion
+
 int main() {
 	Deck deck;
 	stack<Card> deck1 = deck.getDeck();
-	Hand hand1(deck1);
-	Hand hand2(deck1);
-	printDeck(deck1);
-	printHand(hand1);
-	hand1.dumpCard(1);
-	deck.drawCard(hand1.getHand(), deck1);
-	printHand(hand1);
-	printDeck(deck1);
+	Hand hand1(deck.getDeck());
+	Boss destroyer;
+
+	while (destroyer.getBossHp() > 0) {
+		int options;
+		cout << "1) Se voce quer plotar o deck digite" << endl;
+		cout << "2) Se voce quer plotar a mao digite" << endl;
+		cout << "3) Se voce quer plotar o boss digite" << endl;
+		cout << "4) Se voce quer jogar uma carta digite" << endl;
+		cout << endl;
+		cout << "Escolha: ";
+		cin >> options;
+
+		switch (options)
+		{
+		case 1:
+			printDeck(deck);
+			break;
+		case 2:
+			printHand(hand1);
+			break;
+		case 3:
+			printBoss(destroyer);
+			break;
+		case 4:
+			printHand(hand1);
+			int cardposition;
+			cout << "Digite a posicao da carta que deseja jogar: ";
+			cin >> cardposition;
+			hand1.dumpCard(cardposition, destroyer);
+			deck.drawCard(hand1.getHand(), deck.getDeck());
+			cout << "NOVA CARTA RECEBIDA" << endl;
+			break;
+		default:
+			break;
+		}
+	}
+
+	cout << "BOSS DERROTADO" << endl;
 
 
 	return 0;
