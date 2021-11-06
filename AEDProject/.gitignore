@@ -1,0 +1,12 @@
+.vscode/
+Debug/
+AEDProject.aps
+AEDProject.rc
+AEDProject.vcxproj
+AEDProject.vcxproj.filters
+AEDProject.vcxproj.user
+MyForm.cpp
+MyForm.h
+MyForm.resx
+resource.h
+Source.exe
