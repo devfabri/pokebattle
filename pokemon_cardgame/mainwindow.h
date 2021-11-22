@@ -2,10 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "game_stat.h"
+#include "lose_screen.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class QMediaPlayer;
 
 class MainWindow : public QMainWindow
 {
@@ -22,7 +26,7 @@ public:
             case 1:
                 return "FOGO";
             case 2:
-                return "ÁGUA";
+                return "AQUATICO";
             case 3:
                 return "TERRESTRE";
             default:
@@ -45,8 +49,27 @@ private slots:
 
     void on_btn_draw_clicked();
 
+    void soundEngine();
+
+    void combatLog(int);
+
+    void setupCards();
+
+    void setupBoss();
+
+    void gameWin();
+
+    void gameLose();
+
+    void freeHand();
+
+    void on_boss_hp_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
+    QMediaPlayer *music;
+    game_stat *jogo_ganho;
+    lose_screen *jogo_perdido;
 
 };
 #endif // MAINWINDOW_H

@@ -1,5 +1,10 @@
 <RCC>
-    <qresource prefix="/new/images">
+    <qresource prefix="/sounds">
+        <file>resources/background.mp3</file>
         <file>Legendary_Mewtwo.gif</file>
+        <file>resources/03.png</file>
+        <file>resources/atk_hit.wav</file>
+        <file>resources/atk_week.wav</file>
+        <file>resources/game_win.wav</file>
     </qresource>
 </RCC>

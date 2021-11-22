@@ -1,20 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
-#include <stack>
+#include "stack.h"
 
 using namespace std;
 using std::vector;
 using std::string;
-using std::stack;
-
-enum Elemento {
-	ELETRICO,
-	FOGO,
-	AGUA,
-	TERRESTRE,
-	PLANTA
-};
 
 class Boss {
 private:
@@ -22,7 +13,7 @@ private:
 	int hp;
 public:
 	Boss() {
-		hp = 2000;
+		hp = 10000;
 		elemento = Elemento(rand() % 3 + 1);
 	}
 	int getBossHp() {
@@ -40,18 +31,28 @@ public:
 		case 0:
 			if (element == 3) {
 				hp = hp - power * 2;
+                while (elemento == 0){
+                    elemento = Elemento(rand() % 3 + 1);
+                }
+			}
+            else if (element == 0){
+				hp = hp - power / 2;
 			}
 			else {
 				hp = hp - power;
 			}
 			break;
 		case 1:
-			if (element == 3 || element == 2) {
+			if (element == 2 || element == 3) {
 				hp = hp - power * 2;
+                while (elemento == 1){
+                    elemento = Elemento(rand() % 3 + 1);
+                }
 			}
-            if (element == 4){
+            else if (element == 4 || element == 1){
                 hp = hp - power/2;
             }
+
 			else {
 				hp = hp - power;
 			}
@@ -59,6 +60,12 @@ public:
 		case 2:
 			if (element == 0 || element == 4) {
 				hp = hp - power * 2;
+                while (elemento == 2){
+                    elemento = Elemento(rand() % 3 + 1);
+                }
+			}
+            if (element == 1 || element == 2){
+                hp = hp - power / 2;
 			}
 			else {
 				hp = hp - power;
@@ -67,9 +74,12 @@ public:
 		case 3:
 			if (element == 2 || element == 4) {
 				hp = hp - power * 2;
+                while (elemento == 3){
+                    elemento = Elemento(rand() % 3 + 1);
+                }
 			}
 			else if (element == 0) {
-				hp = hp;
+                hp = hp - 0;
 			}
 			else {
 				hp = hp - power;
@@ -78,6 +88,12 @@ public:
 		case 4:
 			if (element == 1) {
 				hp = hp - power * 2;
+                while (elemento == 4){
+                    elemento = Elemento(rand() % 3 + 1);
+                }
+			}
+            if (element == 2 || element == 3 || element == 4 || element == 0){
+				hp= hp - power /2;
 			}
 			else {
 				hp = hp - power;
@@ -86,42 +102,12 @@ public:
 			break;
 		}
 	}
-};
 
-class Card {
-private:
-	string nome_pokemon;
-	Elemento elemento;
-	int poder;
-public:
-	void setElement(Elemento x) {
-		elemento = x;
-	}
-	void setPower(int x) {
-		poder = x;
-	}
-	void setName(string nome) {
-		nome_pokemon = nome;
-	}
-	Elemento getElement() {
-		return elemento;
-	}
-	int getPower() {
-		return poder;
-	}
-	void setCarta(string nome, int power, Elemento element) {
-		setElement(element);
-		setName(nome);
-		setPower(power);
-	}
-	string getName() {
-		return nome_pokemon;
-	}
 };
 
 class Deck {
 private:
-	stack<Card> deck;
+	stack deck;
 public:
 	Deck() {
 		srand((unsigned)time(0));
@@ -172,14 +158,14 @@ public:
         deck.push(c);
 	}
 
-	void drawCard(vector<Card>& hand, stack<Card>& deck) {
+	void drawCard(vector<Card>& hand, stack& deck) {
 		if (hand.size() < 5) {
 			hand.push_back(deck.top());
 			deck.pop();
 		}
 	}
 
-	stack<Card>& getDeck() {
+	stack& getDeck() {
 		return deck;
 	}
 };
@@ -188,7 +174,7 @@ class Hand {
 private:
 	vector<Card> hand;
 public:
-	Hand(stack<Card>& deck) {
+	Hand(stack& deck) {
 		for (int i = 0; i < 5; i++) {
 			hand.push_back(deck.top());
 			deck.pop();

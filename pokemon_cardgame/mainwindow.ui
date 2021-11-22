@@ -36,6 +36,23 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_6">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4"/>
+           </widget>
+          </item>
           <item alignment="Qt::AlignHCenter">
            <widget class="QFrame" name="frame_2">
             <property name="minimumSize">
@@ -47,7 +64,7 @@
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>250</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="frameShape">
@@ -65,6 +82,14 @@
                  <height>25</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Terminal</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">color:#fff;</string>
                </property>
@@ -77,54 +102,67 @@
               </widget>
              </item>
              <item>
+              <widget class="QLabel" name="label">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>170</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resource.qrc">:/sounds/resources/03.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QProgressBar" name="boss_hp">
                <property name="maximum">
                 <number>2000</number>
                </property>
                <property name="value">
-                <number>24</number>
+                <number>2000</number>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QFrame" name="frame_3">
-               <property name="minimumSize">
-                <size>
-                 <width>140</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>140</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-image: url(:/new/images/Legendary_Mewtwo.gif);
-</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
+               <property name="format">
+                <string>%v</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="boss_element">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>35</height>
+                </size>
+               </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
                  <height>30</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Terminal</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true">color:#fff;</string>
@@ -140,11 +178,49 @@
             </layout>
            </widget>
           </item>
+          <item>
+           <widget class="QFrame" name="combat_log">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="boss_damage">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>10</y>
+               <width>71</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Terminal</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(209, 0, 0);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QFrame" name="card_area">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>250</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -191,16 +267,53 @@
                 <cursorShape>ArrowCursor</cursorShape>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(22, 23, 23);</string>
+                <string notr="true">QGroupBox{border:2px solid rgb(20,222,6);background-color:rgb(25,23,23);}*{color:#fff;background-color:rgb(22,23,23);}</string>
                </property>
                <property name="title">
                 <string/>
                </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_3">
-                <item>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="name1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>13</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                    <underline>true</underline>
+                   </font>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>TextLabel</string>
@@ -208,12 +321,32 @@
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
+                  <property name="wordWrap">
+                   <bool>false</bool>
+                  </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="power1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>TextLabel</string>
@@ -225,8 +358,16 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="element1">
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true">QLabel{background-color:rgb(20,222,6);}</string>
                   </property>
                   <property name="text">
                    <string>TextLabel</string>
@@ -238,11 +379,36 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_card1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color:#fff;</string>
+                   <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                   </property>
                   <property name="text">
                    <string>Play Card</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>1</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -264,32 +430,89 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(22, 23, 23);</string>
+                <string notr="true"/>
                </property>
                <property name="title">
                 <string/>
                </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
-                <item>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="name2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>95</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>95</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>13</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                    <underline>true</underline>
+                    <strikeout>false</strikeout>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="power2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string/>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -298,11 +521,22 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="element2">
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                    <stylestrategy>PreferDefault</stylestrategy>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true">background-color: rgb(229, 229, 0);
+color:white;</string>
                   </property>
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -311,11 +545,33 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_card2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color:#fff;</string>
+                   <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                   </property>
                   <property name="text">
                    <string>Play Card</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>2</string>
                   </property>
                   <property name="checkable">
                    <bool>false</bool>
@@ -346,8 +602,39 @@
                 <string/>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
-                <item>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="name3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>13</pointsize>
+                    <underline>true</underline>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -359,8 +646,25 @@
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="power3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -374,6 +678,14 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="element3">
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -387,11 +699,33 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_card3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color:#fff;</string>
+                   <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                   </property>
                   <property name="text">
                    <string>Play Card</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>3</string>
                   </property>
                  </widget>
                 </item>
@@ -412,6 +746,11 @@
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Terminal</family>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(22, 23, 23);</string>
                </property>
@@ -419,8 +758,39 @@
                 <string/>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
-                <item>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="name4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>13</pointsize>
+                    <underline>true</underline>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -432,8 +802,25 @@
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="power4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -447,6 +834,14 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="element4">
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -460,11 +855,33 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_card4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color:#fff;</string>
+                   <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                   </property>
                   <property name="text">
                    <string>Play Card</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>4</string>
                   </property>
                  </widget>
                 </item>
@@ -492,8 +909,39 @@
                 <string/>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
-                <item>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="name5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>13</pointsize>
+                    <underline>true</underline>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -505,8 +953,25 @@
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="power5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -520,6 +985,14 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="element5">
+                  <property name="font">
+                   <font>
+                    <family>Terminal</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
@@ -533,11 +1006,33 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_card5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">color:#fff;</string>
+                   <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                   </property>
                   <property name="text">
                    <string>Play Card</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>5</string>
                   </property>
                  </widget>
                 </item>
@@ -560,7 +1055,7 @@
             </property>
            </spacer>
           </item>
-          <item alignment="Qt::AlignBottom">
+          <item alignment="Qt::AlignVCenter">
            <widget class="QFrame" name="frame_5">
             <property name="minimumSize">
              <size>
@@ -614,11 +1109,33 @@
              </item>
              <item>
               <widget class="QPushButton" name="btn_draw">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
-                <string notr="true">color:#fff;</string>
+                <string notr="true">QPushButton{
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius:10px;
+border: 2px solid rgb(255, 0, 0);
+margin-bottom:5px;
+}
+
+QPushButton:hover{
+	background-color: rgb(221, 221, 221);
+}</string>
                </property>
                <property name="text">
                 <string>Play Card</string>
+               </property>
+               <property name="shortcut">
+                <string>Space</string>
                </property>
               </widget>
              </item>
@@ -634,6 +1151,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
